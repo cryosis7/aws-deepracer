@@ -1,8 +1,5 @@
 import aim_for_waypoint as deepRacer
-import pytest
-import logging
 
-params = {}
 
 def setupParams():
     return {
@@ -12,6 +9,7 @@ def setupParams():
         'closest_waypoints': [0, 1],
         'waypoints': [(0, 0), (2, 0), (4, 1), (5, 2), (4, 3), (2, 3), (1, 2), (0, 1)],
         'steering_angle': 0}
+
 
 def test_iterate_through_all_locations():
     params = setupParams()

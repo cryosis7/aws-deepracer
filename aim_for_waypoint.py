@@ -1,5 +1,6 @@
 import math
 
+
 def reward_function(params):
     '''
     Rewards the car if it is pointing towards the nearest waypoint.
@@ -17,16 +18,16 @@ def reward_function(params):
     if heading < 0:
         heading = 360 + heading
 
-
     # Calculating the % difference between angle to next waypoint and current orientation of car.
     waypoint_heading = angle(car_position, waypoints[next_waypoint])
-    angle_difference = min(abs(waypoint_heading - heading), 360 - abs(waypoint_heading - heading))
-    heading_score = abs((180 - angle_difference) / 180)  # Converting this orientation into a % score
+    angle_difference = min(abs(waypoint_heading - heading),
+                           360 - abs(waypoint_heading - heading))
+    # Converting this orientation into a % score
+    heading_score = abs((180 - angle_difference) / 180)
 
     # The angle our current steering will take us from the waypoint. 0 = on the waypoint
     steering_difference = abs(angle_difference - steering_angle) % 360
     steering_score = abs((180 - steering_difference) / 180)
-
 
     # print(params,
     #     "\nWaypoint Heading: ", waypoint_heading, " Heading: ", heading,
@@ -35,7 +36,6 @@ def reward_function(params):
     #     "\nSteering Difference: ", steering_difference,
     #     "\nSteering Score: ", steering_score,
     #     "\n", heading_score, steering_score)
-
 
     # Applying weightings to the score
     reward = (heading_score + steering_score) / 2
