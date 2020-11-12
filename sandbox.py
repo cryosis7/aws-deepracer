@@ -1,5 +1,8 @@
 import steering_based_reward as deepRacer
 
+'''
+A function for testing the reward function with specific paramters
+'''
 
 def test():
     params = {'x': 0, 'y': 0, 'heading': 15, 'closest_waypoints': [0, 1], 'waypoints': [

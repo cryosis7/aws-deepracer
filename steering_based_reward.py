@@ -11,7 +11,7 @@ def reward_function(params):
     '''
     Rewards the car if it is pointing towards the nearest waypoint.
 
-    The heading is converted from -180 - 180 to 0 - 360.
+    The heading is converted from -180 - 180 to 0 - 360. Heading starts from the right hand side (East), rotates anti-clockwise
     '''
 
     # Read input parameters
@@ -29,10 +29,10 @@ def reward_function(params):
     target_waypoint = get_target_point(waypoints, car_position, track_width)
     target_steering_angle = get_angle(car_position, target_waypoint)
     absolute_steering_angle = get_absolute_steering_angle(
-        heading, steering_angle)
+        heading, steering_angle) # Converts the steering angle we are given (-30 through to 30, based on current cars angle) to an angle independant from cars orientation.
 
     angle = abs(absolute_steering_angle - target_steering_angle)
-    steering_error = min(angle, 360 - angle)
+    steering_error = min(angle, 360 - angle) # The angle of difference between the way our wheels are pointing and the direction we want them to point.
     steering_penalty = min(steering_error / 60.0, 1.0)
 
     if debug:

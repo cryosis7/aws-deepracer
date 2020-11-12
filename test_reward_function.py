@@ -1,6 +1,13 @@
 import steering_based_reward as deepRacer
 
 
+'''
+A testing function to confirm that the reward doesnt exceed the bounds.
+To run:
+install pytest with 'pip install pytest'
+in a console, cd here and run 'pytest'
+'''
+
 def setupParams():
     return {
         'x': 0,
