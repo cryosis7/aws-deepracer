@@ -1,4 +1,4 @@
-import steering_speed_based_reward as deepRacer
+import abel_tasman as deepRacer
 
 '''
 A function for testing the reward function with specific paramters

@@ -1,8 +1,8 @@
 import math
 
-RADIUS_MODIFIER = 1.0
+RADIUS_MODIFIER = 1.1
+MAX_SPEED = 2
 MAX_STEERING_ERROR = 50.0
-MAX_STEPS = 250
 DEBUG = False
 
 
@@ -26,6 +26,7 @@ def reward_function(params):
     steering_angle = params['steering_angle']
     heading = params['heading']
     track_width = params['track_width']
+    # speed = params['speed']
 
     if heading < 0:
         heading = 360 + heading
@@ -52,7 +53,7 @@ def reward_function(params):
 
     reward = 1.0 - abs(steering_penalty)
     if params['progress'] >= 100:
-        reward = (MAX_STEPS - params['steps']) * 2
+        reward = 30
 
     return float(reward or 0.01)
 
